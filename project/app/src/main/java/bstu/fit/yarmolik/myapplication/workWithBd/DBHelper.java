@@ -1,4 +1,4 @@
-package bstu.fit.yarmolik.myapplication;
+package bstu.fit.yarmolik.myapplication.workWithBd;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -35,7 +35,19 @@ public class DBHelper  extends SQLiteOpenHelper {
 
         statement.executeInsert();
     }
-
+public void insertAudit(String type, String number_corp, String number, String capacity, String projector, String interactive){
+    SQLiteDatabase database = getWritableDatabase();
+    String sql = "INSERT INTO audience VALUES (NULL, ?, ?, ?, ?, ?, ?)";
+    SQLiteStatement statement = database.compileStatement(sql);
+    statement.clearBindings();
+    statement.bindString(1, type);
+    statement.bindString(2,number_corp);
+    statement.bindString(3, number);
+    statement.bindString(4, capacity);
+    statement.bindString(5,projector);
+    statement.bindString(6,interactive);
+    statement.executeInsert();
+}
     public  void deleteData(String name) {
         SQLiteDatabase database = getWritableDatabase();
         //

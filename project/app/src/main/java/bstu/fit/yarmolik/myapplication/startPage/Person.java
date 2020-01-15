@@ -1,4 +1,4 @@
-package bstu.fit.yarmolik.myapplication;
+package bstu.fit.yarmolik.myapplication.startPage;
 
 public abstract class Person {
 

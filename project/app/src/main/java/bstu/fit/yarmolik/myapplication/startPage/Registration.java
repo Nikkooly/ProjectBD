@@ -1,4 +1,4 @@
-package bstu.fit.yarmolik.myapplication;
+package bstu.fit.yarmolik.myapplication.startPage;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,25 +15,23 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.text.InputType;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
-import android.widget.AdapterView.OnItemSelectedListener;
+
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+
+import bstu.fit.yarmolik.myapplication.R;
+import bstu.fit.yarmolik.myapplication.workWithBd.DBHelper;
 
 public class Registration extends AppCompatActivity {
     final int REQUEST_CODE_GALLERY = 999;
@@ -53,7 +51,7 @@ public class Registration extends AppCompatActivity {
         init();
         LoadFaculty();
         LoadDepartment();
-        department = (Spinner) findViewById(R.id.department);
+        department = (Spinner) findViewById(R.id.type_audit);
         faculty= (Spinner) findViewById(R.id.faculty);
         choose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -147,7 +145,7 @@ public class Registration extends AppCompatActivity {
         LoadData("Select * from faculty",faculties,"faculty",spinner);
     }
     public void LoadDepartment(){
-        Spinner spinner = (Spinner) findViewById(R.id.department);
+        Spinner spinner = (Spinner) findViewById(R.id.type_audit);
        LoadData("Select * from department",departments,"department",spinner);
     }
     public void LoadData(String query, ArrayList<String> arraylist,String name_of_column, Spinner spinner){
