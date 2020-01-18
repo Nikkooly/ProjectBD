@@ -48,6 +48,18 @@ public void insertAudit(String type, String number_corp, String number, String c
     statement.bindString(6,interactive);
     statement.executeInsert();
 }
+    public void insertBook(String type, String number,String number_corp, String date, String time){
+        SQLiteDatabase database = getWritableDatabase();
+        String sql = "INSERT INTO book VALUES (NULL, ?, ?, ?, ?, ?)";
+        SQLiteStatement statement = database.compileStatement(sql);
+        statement.clearBindings();
+        statement.bindString(1, type);
+        statement.bindString(2,number);
+        statement.bindString(3, number_corp);
+        statement.bindString(4, date);
+        statement.bindString(5, time);
+        statement.executeInsert();
+    }
 
     public void updateData(String type, String number_corps,String number, String capacity, String projector, String interactive, String num, String corp ) {
         SQLiteDatabase database = getWritableDatabase();

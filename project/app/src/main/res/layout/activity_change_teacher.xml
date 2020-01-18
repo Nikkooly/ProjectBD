@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="50px"
+    android:paddingLeft="30px"
+    android:paddingRight="30px">
+    <TableRow>
+        <TextView
+            android:layout_weight="0.5"
+            android:textSize="22sp"
+            android:text="Surname"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/surnamet"
+            android:textSize="22sp"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"  />
+    </TableRow>
+    <TableRow>
+        <TextView
+            android:layout_weight="0.5"
+            android:textSize="22sp"
+            android:text="Name"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/namet"
+            android:textSize="22sp"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"  />
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:layout_weight="0.5"
+            android:textSize="22sp"
+            android:text="Email"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/emailt"
+            android:textSize="22sp"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"  />
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:layout_weight="0.5"
+            android:textSize="22sp"
+            android:text="Phone"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/phonet"
+            android:inputType="phone"
+            android:textSize="22sp"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"  />
+
+    </TableRow>
+
+    <TableRow>
+        <ImageView
+            android:paddingLeft="0dp"
+            android:layout_weight="0.1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/imageViewt"
+            app:srcCompat="@mipmap/ic_launcher" />
+
+    </TableRow>
+
+
+
+
+
+    <TableRow>
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_weight="0.5"
+            android:textSize="22sp"
+            android:text="Faculty"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content" />
+
+        <Spinner
+            android:layout_marginTop="10dp"
+            android:id="@+id/facultyt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </TableRow>
+    <TableRow>
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_weight="0.5"
+            android:textSize="22sp"
+            android:text="Department"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content" />
+
+        <Spinner
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:id="@+id/type_audit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </TableRow>
+    <TableRow>
+        <TextView
+            android:layout_weight="0.5"
+            android:textSize="22sp"
+            android:text="Login"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/logint"
+            android:textSize="22sp"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"  />
+    </TableRow>
+    <TableRow>
+        <TextView
+            android:layout_weight="0.5"
+            android:textSize="22sp"
+            android:text="Password"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/passwordt"
+            android:inputType="textPassword"
+            android:textSize="22sp"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"  />
+    </TableRow>
+    <Button
+        android:id="@+id/Register1"
+        android:layout_width="344dp"
+        android:layout_height="wrap_content"
+        android:layout_span="2"
+        android:text="Сохранить"
+        android:textAlignment="center" />
+
+</TableLayout>

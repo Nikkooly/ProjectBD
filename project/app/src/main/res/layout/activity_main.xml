@@ -11,15 +11,27 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="30px"
         android:layout_marginTop="50px"
-        android:onClick="AddUser"
-        android:text="Add user" />
+        android:onClick="Book"
+        android:text="Занять аудиторию" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30px"
-        android:onClick="Persons"
-        android:text="Persons" />
+        android:onClick="See"
+        android:text="Просмотреть профиль" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30px"
+        android:onClick="AddNote"
+        android:text="Добавить заметку" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30px"
+        android:onClick="SeeAudit"
+        android:text="Просмотреть аудитории" />
 
     <!--  <Button
           android:layout_width="wrap_content"

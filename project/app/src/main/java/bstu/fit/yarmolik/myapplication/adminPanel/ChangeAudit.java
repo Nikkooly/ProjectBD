@@ -1,11 +1,10 @@
-package bstu.fit.yarmolik.myapplication;
+package bstu.fit.yarmolik.myapplication.adminPanel;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteStatement;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,6 +17,8 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import bstu.fit.yarmolik.myapplication.R;
+import bstu.fit.yarmolik.myapplication.adminPanel.Admin;
 import bstu.fit.yarmolik.myapplication.workWithBd.DBHelper;
 
 public class ChangeAudit extends AppCompatActivity  {

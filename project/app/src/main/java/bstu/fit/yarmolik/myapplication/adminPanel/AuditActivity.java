@@ -1,4 +1,4 @@
-package bstu.fit.yarmolik.myapplication;
+package bstu.fit.yarmolik.myapplication.adminPanel;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
+import bstu.fit.yarmolik.myapplication.R;
 import bstu.fit.yarmolik.myapplication.workWithBd.DBHelper;
 
 public class AuditActivity extends AppCompatActivity implements LoadFaculty {

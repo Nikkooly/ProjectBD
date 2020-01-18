@@ -4,21 +4,24 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
-import bstu.fit.yarmolik.myapplication.Admin;
+import bstu.fit.yarmolik.myapplication.adminPanel.Admin;
+import bstu.fit.yarmolik.myapplication.MainActivity;
 import bstu.fit.yarmolik.myapplication.R;
-import bstu.fit.yarmolik.myapplication.startPage.Registration;
 import bstu.fit.yarmolik.myapplication.workWithBd.DBHelper;
 import bstu.fit.yarmolik.myapplication.workWithBd.MethodsDB;
 
 public class Login extends AppCompatActivity {
     private EditText loginField,passwordField;
+    public static String log_name;
     String password;
     Cursor c;
     String surname="",name="",email,phone,faculty,department,login,query;
@@ -46,15 +49,17 @@ public class Login extends AppCompatActivity {
         loginField = findViewById(R.id.et_login);
         passwordField = findViewById(R.id.et_password);
     }
-
+public void per(String log){
+        String name="";
+}
     public void Authorization(View view){
-       /* String log="";
+        log_name=loginField.getText().toString();
+        String log="";
         String pass="";
         SQLiteDatabase database = dbHelper.getReadableDatabase();
         log=loginField.getText().toString();
         pass=passwordField.getText().toString();
         query= "select * from users where login=" +"'"+log+"'" +" and password="+"'"+pass+"'" ;
-//query="select * from users where login='ar' and password='1234567'";
         c = database.rawQuery(query,null);
         c.moveToFirst();
         while (!c.isAfterLast()) {
@@ -67,28 +72,29 @@ public class Login extends AppCompatActivity {
         c.close();
         Log.d(name,surname);
 
-       if(log.equals("*− −** −− ** −*") && pass.equals("sqd1063"))
-        {*/
+       if(log.equals("AdminOfApp") && pass.equals("sqd1063"))
+        {
             Intent intent = new Intent(this, Admin.class);
             startActivity(intent);
             Log.d("Admin open", "Success");
-        /*}
+        }
         if(name.equals("")||surname.equals("")) {
             Toast.makeText(getApplicationContext(), "Fiasko bro", Toast.LENGTH_SHORT).show();
         }
         else {
+            per(log);
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
             Log.d("Teacher open", "Success");
         }
-        /*if(name.equals("")) {
+        if(name.equals("")) {
             Toast.makeText(getApplicationContext(), "Fiasko bro", Toast.LENGTH_SHORT).show();
         }
         else {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
             Log.d("Registration open", "Success");
-        }*/
+        }
         name="";
         surname="";
     }
