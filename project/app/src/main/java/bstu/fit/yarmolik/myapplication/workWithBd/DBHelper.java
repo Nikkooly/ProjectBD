@@ -48,7 +48,23 @@ public void insertAudit(String type, String number_corp, String number, String c
     statement.bindString(6,interactive);
     statement.executeInsert();
 }
-    public  void deleteData(String name) {
+
+    public void updateData(String type, String number_corps,String number, String capacity, String projector, String interactive, String num, String corp ) {
+        SQLiteDatabase database = getWritableDatabase();
+        String sql = "UPDATE audience SET type = ?, number_corps = ?, number = ?, capacity = ?, projector=?, capacity=? WHERE number = ? and number_corps=?";
+        SQLiteStatement statement = database.compileStatement(sql);
+        //сделать clearbindings
+        statement.bindString(1, type);
+        statement.bindString(2, number_corps);
+        statement.bindString(3, number);
+        statement.bindString(4, capacity);
+        statement.bindString(5, projector);
+        statement.bindString(6, interactive);
+        statement.bindString(7, num);
+        statement.bindString(8, corp);
+        statement.execute();
+        database.close();
+    }  public  void deleteData(String name) {
         SQLiteDatabase database = getWritableDatabase();
         //
         String sql = "DELETE FROM users WHERE name = ?";

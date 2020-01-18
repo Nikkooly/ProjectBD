@@ -46,20 +46,20 @@ public class Admin extends AppCompatActivity {
             public void onClick(View view) {
                 recyclerView = (RecyclerView) findViewById(R.id.list);
                 recyclerView.setLayoutManager(new LinearLayoutManager(context));
-                ArrayList<Teachers> teachers= new ArrayList<Teachers>();
+                ArrayList<Audience> teachers= new ArrayList<Audience>();
                 dbHelper = new DBHelper(context, "project.db", null, 1);
                 SQLiteDatabase database = dbHelper.getWritableDatabase();
-                c = database.rawQuery("select * from users",new String[] {});
+                c = database.rawQuery("select * from audience",new String[] {});
                 c.moveToFirst();
-                arraylist = new ArrayList<String>();
-                arraylistnext = new ArrayList<String>();
                 while (!c.isAfterLast()) {
-                    String name= c.getString(c.getColumnIndex("name"));
-                    String login=c.getString(c.getColumnIndex("login"));
+                    String number= c.getString(c.getColumnIndex("number"));
+                    String campus=c.getString(c.getColumnIndex("number_corps"));
+                    String info = number+"-"+campus;
                     c.moveToNext();
-                    arraylist.add(name);
-                    arraylistnext.add(login);
-                    teachers.add(new Teachers(arraylist.toString(),arraylistnext.toString()));
+                    teachers.add(new Audience(info));
+                    //teachers.add(new Audience("hello"));
+                    AudienceAdapter carAdapter = new AudienceAdapter(teachers);
+                    recyclerView.setAdapter(carAdapter);
                 }
             }
         });
@@ -79,7 +79,7 @@ public class Admin extends AppCompatActivity {
     }
     private void init(){
        change_audit=findViewById(R.id.change_audit) ;
-       list_teachers=findViewById(R.id.list_teacher);
+      // list_teachers=findViewById(R.id.list_teacher);
     }
 
 }

@@ -146,7 +146,7 @@
         />
 
     <Button
-        android:id="@+id/add"
+        android:id="@+id/add_audit"
         android:layout_width="349dp"
         android:layout_height="43dp"
         android:layout_marginStart="34dp"

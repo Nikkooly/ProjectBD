@@ -21,19 +21,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/list_teacher"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="151dp"
-        android:layout_marginTop="11dp"
-        android:layout_marginEnd="172dp"
-        android:text="Список преподавателей"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.42"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/change_audit" />
-
-    <Button
         android:id="@+id/change_audit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -45,13 +32,10 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list"
-        android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:layout_marginTop="51dp"
-        android:layout_marginBottom="1dp"
+        android:layout_width="410dp"
+        android:layout_height="525dp"
         app:layoutManager="LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/list_teacher" />
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

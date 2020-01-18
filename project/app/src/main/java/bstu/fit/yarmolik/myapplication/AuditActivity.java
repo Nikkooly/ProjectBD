@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 import bstu.fit.yarmolik.myapplication.workWithBd.DBHelper;
 
-public class AuditActivity extends AppCompatActivity {
+public class AuditActivity extends AppCompatActivity implements LoadFaculty {
     public static DBHelper dbHelper;
     EditText number_corps, number, capacity;
     Spinner type_audit;
@@ -25,6 +25,7 @@ public class AuditActivity extends AppCompatActivity {
     Cursor c;
     String name="";
     String check1="no", check2="no";
+    CheckBox proj,inter;
     //CheckBox projector, interactive;
     ArrayList<String> type;
     @Override
@@ -36,8 +37,8 @@ public class AuditActivity extends AppCompatActivity {
         add_audit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                checkNumber("select * from audience where number="+number.getText().toString()+" and number_corps="+number_corps.getText().toString(),"number");
-                if(name=="") {
+                checkNumber("select * from audience where number="+number.getText().toString()+" and number_corps="+"'"+number_corps.getText().toString()+"'","number");
+                if(name.equals("")) {
                     dbHelper.insertAudit(
                             type_audit.getSelectedItem().toString(),
                             number_corps.getText().toString(),
@@ -93,6 +94,7 @@ public class AuditActivity extends AppCompatActivity {
              name= c.getString(c.getColumnIndex(name_of_column));
             c.moveToNext();
         }
+        c.close();
     }
     public void LoadData(String query, ArrayList<String> arraylist, String name_of_column, Spinner spinner){
         dbHelper = new DBHelper(this, "project.db", null, 1);
@@ -114,7 +116,9 @@ public class AuditActivity extends AppCompatActivity {
        number_corps=findViewById(R.id.number_corps);
        number=findViewById(R.id.number);
        capacity= findViewById(R.id.capacity);
-        add_audit=findViewById(R.id.add);
+        add_audit=findViewById(R.id.add_audit);
+        proj=findViewById(R.id.projector);
+        inter=findViewById(R.id.interactive);
        // projector= findViewById(R.id.projector);
         //interactive= findViewById(R.id.interactive);
     }
