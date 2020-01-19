@@ -37,6 +37,10 @@ public class MainActivity extends AppCompatActivity  {
         Intent intent = new Intent(this,ChangeTeacher.class);
         startActivity(intent);
    }
+   public void AddNote(View view){
+       Intent intent = new Intent(this,Note.class);
+       startActivity(intent);
+   }
    /*
         FragmentManager fm = getSupportFragmentManager();
 
