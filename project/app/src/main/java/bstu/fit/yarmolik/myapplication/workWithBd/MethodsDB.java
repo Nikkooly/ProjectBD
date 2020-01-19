@@ -40,7 +40,8 @@ public class MethodsDB {
                  "number Text," +
                  " number_corps Text," +
                  " date Text," +
-                 " time Text, " +
+                 " time Text," +
+                 "login Text, " +
                  "foreign key(type) references type(type), UNIQUE (number) ON CONFLICT IGNORE)");
      }
 

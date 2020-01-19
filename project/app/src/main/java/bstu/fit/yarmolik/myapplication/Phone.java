@@ -34,6 +34,6 @@ public class Phone {
     }
     @Override
     public  String toString(){
-        return title + " " + info+" "+phone;
+        return title + "\n" + info+"\n"+phone;
     }
 }

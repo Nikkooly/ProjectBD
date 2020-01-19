@@ -13,12 +13,17 @@ import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Note extends AppCompatActivity {
@@ -27,8 +32,10 @@ public class Note extends AppCompatActivity {
     ArrayList<String> contacts = new ArrayList<String>();
     EditText edit,title;
     Spinner spinner;
+    TextView textView;
     private List<Phone> phones;
     ListView listView;
+    Button add,save,disp;
     private ArrayAdapter<Phone> adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,16 +106,33 @@ public class Note extends AppCompatActivity {
         spinner=findViewById(R.id.contacts);
         title=findViewById(R.id.editText10);
         listView = (ListView) findViewById(R.id.list);
+        phones = new ArrayList<>();
+        phones = JSONHelper.importFromJSON(this);
+        add=findViewById(R.id.AddNote);
+        save=findViewById(R.id.button3);
+        textView=findViewById(R.id.textView8);
+        disp=findViewById(R.id.button5);
     }
     public void AddNote(View view){
-        phones = new ArrayList<>();
-        String tit=title.getText().toString();
-        String info=edit.getText().toString();
-        String ph=spinner.getSelectedItem().toString();
-        Phone phone = new Phone(tit,info,ph);
-        //Phone phone = new Phone("jhmjhjh","kmj","mjhjm");
-        phones.add(phone);
-        //adapter.notifyDataSetChanged();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Date date = new Date();
+        String tit="Title:"+" "+title.getText().toString();
+        String info="Body:"+" "+edit.getText().toString()+"\n"+"Date: "+ dateFormat.format(date).toString();
+        String ph="Phone:"+" "+spinner.getSelectedItem().toString();
+        if(tit.equals("") || info.equals("")){
+            Toast.makeText(this, "Заполните поля", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            Phone phone = new Phone(tit, info, ph);
+            //Phone phone = new Phone("jhmjhjh","kmj","mjhjm");
+            phones.add(phone);
+            Toast.makeText(this, "Заметка добавлена. Нажмите сохранить для занесения в файл!", Toast.LENGTH_LONG).show();
+            title.setText(null);
+            edit.setText(null);
+        }
+
+    }
+    public void SaveIt(View view){
         boolean result = JSONHelper.exportToJSON(this, phones);
         if(result){
             Toast.makeText(this, "Данные сохранены", Toast.LENGTH_LONG).show();
@@ -116,5 +140,35 @@ public class Note extends AppCompatActivity {
         else{
             Toast.makeText(this, "Не удалось сохранить данные", Toast.LENGTH_LONG).show();
         }
+    }
+    public void Display(View view){
+        listView.setVisibility(View.VISIBLE);
+        edit.setVisibility(View.INVISIBLE);
+        title.setVisibility(View.INVISIBLE);
+        spinner.setVisibility(View.INVISIBLE);
+        add.setVisibility(View.INVISIBLE);
+        save.setVisibility(View.INVISIBLE);
+        textView.setVisibility(View.INVISIBLE);
+        disp.setVisibility(View.VISIBLE);
+        phones = JSONHelper.importFromJSON(this);
+        if(phones!=null){
+            adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, phones);
+            listView.setAdapter(adapter);
+            Toast.makeText(this, "Данные восстановлены", Toast.LENGTH_LONG).show();
+        }
+        else{
+            Toast.makeText(this, "Не удалось открыть данные", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public void Displ(View view){
+        listView.setVisibility(View.INVISIBLE);
+        edit.setVisibility(View.VISIBLE);
+        title.setVisibility(View.VISIBLE);
+        spinner.setVisibility(View.VISIBLE);
+        add.setVisibility(View.VISIBLE);
+        save.setVisibility(View.VISIBLE);
+        textView.setVisibility(View.VISIBLE);
+        disp.setVisibility(View.INVISIBLE);
     }
 }

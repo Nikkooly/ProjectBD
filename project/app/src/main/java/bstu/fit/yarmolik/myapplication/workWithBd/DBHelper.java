@@ -48,9 +48,9 @@ public void insertAudit(String type, String number_corp, String number, String c
     statement.bindString(6,interactive);
     statement.executeInsert();
 }
-    public void insertBook(String type, String number,String number_corp, String date, String time){
+    public void insertBook(String type, String number,String number_corp, String date, String time,String login){
         SQLiteDatabase database = getWritableDatabase();
-        String sql = "INSERT INTO book VALUES (NULL, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO book VALUES (NULL, ?, ?, ?, ?, ?, ?)";
         SQLiteStatement statement = database.compileStatement(sql);
         statement.clearBindings();
         statement.bindString(1, type);
@@ -58,6 +58,7 @@ public void insertAudit(String type, String number_corp, String number, String c
         statement.bindString(3, number_corp);
         statement.bindString(4, date);
         statement.bindString(5, time);
+        statement.bindString(6, login);
         statement.executeInsert();
     }
 

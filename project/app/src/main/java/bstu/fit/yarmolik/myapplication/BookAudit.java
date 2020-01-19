@@ -15,17 +15,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-
+import bstu.fit.yarmolik.myapplication.startPage.Login;
 import bstu.fit.yarmolik.myapplication.workWithBd.DBHelper;
 
 public class BookAudit extends AppCompatActivity {
     String[] times = {"8.00-9.35", "9.50-11.25", "11.40-13.15", "13.50-15.25", "15.40-17.15", "17.30-19.05","19.20-20.55"};
-    String selectedDate="";
+    String selectedDate="",log="",query;
+    Integer id=0;
     public static DBHelper dbHelper;
     Cursor c;
+    TextView textView;
     Spinner time,type,corp,number;
     ArrayList<String> types,numbers;
-    String p="";
+    String p="",information="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +57,7 @@ public class BookAudit extends AppCompatActivity {
                     //Spinner spinner = (Spinner) findViewById(R.id.corp_number);
                     LoadData("Select distinct number from audience where number_corps=" + "'" + corp.getSelectedItem().toString() + "'"+ "and type="+"'"+type.getSelectedItem().toString()+"'", numbers, "number", number);
                     if(corp.getSelectedItem().toString()!=""){
-                       // LoadData("Select distinct number from audience where number_corps=" + "'" + corp.getSelectedItem().toString() + "'", numbers, "number", number);
+                       load();
                     }
                 }
 
@@ -104,15 +106,32 @@ public class BookAudit extends AppCompatActivity {
         type=findViewById(R.id.type_audit1);
         corp=findViewById(R.id.corp_number);
         number=findViewById(R.id.number4);
+        textView=findViewById(R.id.textView7);
     }
     public void BookData(View view){
-        dbHelper.insertBook(
-                type.getSelectedItem().toString(),
-                corp.getSelectedItem().toString(),
-                number.getSelectedItem().toString(),
-                selectedDate,
-                time.getSelectedItem().toString()
-        );
-        Toast.makeText(getApplicationContext(), "Succesfully book", Toast.LENGTH_LONG).show();
+        log=Login.log_name;
+
+                dbHelper.insertBook(
+                        type.getSelectedItem().toString(),
+                        number.getSelectedItem().toString(),
+                        corp.getSelectedItem().toString(),
+                        selectedDate,
+                        time.getSelectedItem().toString(),
+                        log
+                );
+                Toast.makeText(getApplicationContext(), "Succesfully book", Toast.LENGTH_LONG).show();
+    }
+    public void load(){
+        SQLiteDatabase database = dbHelper.getReadableDatabase();
+        query= "select distinct * from audience where number_corps=" + "'" + corp.getSelectedItem().toString() + "'"+ "and type="+"'"+type.getSelectedItem().toString()+"'";
+        c = database.rawQuery(query,null);
+        c.moveToFirst();
+        while (!c.isAfterLast()) {
+information="Вместимость: "+c.getString(4)+" человек(а)"+"\n"+"Проектор: "+c.getString(5)+"\n"+"Интерактивная доска: "+c.getString(5);
+textView.setText(information);
+            c.moveToNext();
+        }
+
+        c.close();
     }
 }

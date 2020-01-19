@@ -127,7 +127,7 @@ String number,num,corp;
         }
     }
     public void Change(View view){
-        dbHelper.updateData(
+        /*dbHelper.updateData(
                 type_audit.getSelectedItem().toString(),
                 number_corps.getText().toString(),
                 number1.getText().toString(),
@@ -136,16 +136,16 @@ String number,num,corp;
                 check2,
                 num,
                 corp
-        );
-        Log.d("111",type_audit.getSelectedItem().toString());
-        Log.d("111",number_corps.getText().toString());
-        Log.d("111",number1.getText().toString());
-        Log.d("111",capacity.getText().toString());
-        Log.d("111",project.getText().toString());
-        Log.d("111",check2);
-        Log.d("111",num);
-        Log.d("111",corp);
-        Toast.makeText(getApplicationContext(), "Successfully update", Toast.LENGTH_SHORT).show();
+        );*/
+        SQLiteDatabase db = getBaseContext().openOrCreateDatabase("project.db", MODE_PRIVATE, null);
+        db.execSQL("UPDATE audience SET type = '"+type_audit.getSelectedItem().toString()+"' WHERE number_corps = '"+corp+"' and number='"+num+"';");
+        db.execSQL("UPDATE audience SET number_corps = '"+number_corps.getText().toString()+"' WHERE number_corps = '"+corp+"' and number='"+num+"';");
+        db.execSQL("UPDATE audience SET number = '"+number1.getText().toString()+"' WHERE number_corps = '"+corp+"' and number='"+num+"';");
+        db.execSQL("UPDATE audience SET capacity = '"+capacity.getText().toString()+"' WHERE number_corps = '"+corp+"' and number='"+num+"';");
+        db.execSQL("UPDATE audience SET projector = '"+check1+"' WHERE number_corps = '"+corp+"' and number='"+num+"';");
+        db.execSQL("UPDATE audience SET interactive = '"+check2+"' WHERE number_corps = '"+corp+"' and number='"+num+"';");
+        //""' and phone_number = '"+phone_s+"' and social_network = '"+social_s+"' and course = '"+lang+"' and profession = '"+profession+"'  WHERE name = '"+name+"'");
+        Toast.makeText(getApplicationContext(), "Updated successfully!", Toast.LENGTH_SHORT).show();
         Intent intent= new Intent(this, Admin.class);
         startActivity(intent);
     }
